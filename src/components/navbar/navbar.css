@@ -1,0 +1,19 @@
+:root {
+    --dark-nav-bg: #272b33;
+    --dark-bg: #0a0c10;
+}
+
+.bg-dark {
+    background-color: var(--dark-nav-bg);
+    width: 100%;
+    padding: 1rem;
+}
+
+.brand-name, .user-section > .user-name, .user-section i  {
+    color: whitesmoke;
+}
+
+.user-section:hover{
+    color: inherit;
+}
+
