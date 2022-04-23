@@ -1,0 +1,27 @@
+.video-card {
+    max-width: 25rem;
+    height: 20rem;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.thumbnail-container {
+    height: 70%;
+    background-color: aqua;
+}
+
+.thumbnail-container img {
+    height: 100%;
+}
+
+.video-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-container {
+    background-color: red;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
