@@ -6,8 +6,12 @@
 
 .bg-side-nav-dark {
     background-color: var(--side-nav-hover);
-    width: 24rem;
+    max-width: 28rem;
     height: 100vh;
+    position: fixed;
+    top: 73px;
+    left: 0;
+    border-right: 1px solid #272b33;
 }
 
 .bg-side-nav-dark .nav-item:hover{

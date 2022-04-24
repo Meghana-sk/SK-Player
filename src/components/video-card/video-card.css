@@ -1,27 +1,92 @@
 .video-card {
-    max-width: 25rem;
-    height: 20rem;
-    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+    height: 22rem;
+    background-color: transparent;
+    /* margin-bottom: 30px; */
     cursor: pointer;
+    color: whitesmoke;
 }
 
 .thumbnail-container {
     height: 70%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .thumbnail-container img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: top;
 }
 
 .video-details {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    margin: 8px auto;
+    gap: 0.5rem;
+	/* width: calc(100%-16px); */
+}
+
+.videoDetails h6 {
+	margin: 6px 0 4px;
 }
 
 .channel-container {
-    background-color: red;
+    /* background-color: red; */
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    align-self: center;
+    margin-left: 8px;
+}
+
+.channel-container .channel-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.video-all-details {
+    max-width: 90%;
+    text-align: left;
+    margin: 0 8px;
+}
+
+/* .video-all-details .title {
+    display: flex;
+    flex-direction: column;
+} */
+
+.video-all-details .video-title {
+    line-height: 18px;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: whitesmoke;
+}
+
+.video-all-details > .channel-name {
+    color: whitesmoke;
+}
+
+.video-actions span {
+    font-size: 0.6rem;
+}
+
+.more-option {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-bottom: auto;
+    color: whitesmoke;
+}
+
+.more-option i:hover {
+    color: inherit;
 }

@@ -21,7 +21,7 @@ export const Navbar = () => {
             <i className="fas fa-user"></i>
           </>
         ) : (
-          <button class="btn btn-primary login-btn">
+          <button className="btn btn-primary login-btn">
             <i className="fas fa-user"></i>
             Login
           </button>
