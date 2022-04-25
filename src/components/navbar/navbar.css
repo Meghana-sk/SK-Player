@@ -1,0 +1,65 @@
+@import url("../color-palette/colors.css");
+
+.bg-dark {
+    background-color: var(--dark-gray);
+    border-bottom: 1px solid var(--light-gray-shade);
+}
+
+.nav {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.nav .brand-name {
+    margin: 0 1.5rem;
+}
+
+.nav .search-box {
+    max-width: 450px;
+    display: flex;
+    flex-grow: 1;
+    margin: 0 1rem;
+    border: 1px solid var(--lightish-gray-shade);
+}
+
+.nav .search-box input {
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--dark-black);
+    padding: 0.4rem;
+    color: var(--white-smoke);
+}
+
+.nav .search-box .search-btn {
+    padding: 0.4rem;
+    background-color: var( --dark-black);
+    color: var(--white-smoke);
+}
+
+.nav .search-box .search-btn i:hover {
+    cursor: pointer;
+    color: inherit;
+}
+
+.brand-name, .user-section > .user-name, .user-section i  {
+    color: var(--white-smoke);
+}
+
+.nav .user-section i {
+    display: flex;
+    margin-left: 5px;
+}
+
+.nav .user-section .login-btn {
+    height: 35px;
+}
+
+.user-section:hover {
+    color: inherit;
+}
+

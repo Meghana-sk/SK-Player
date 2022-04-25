@@ -1,0 +1,31 @@
+@import url("../color-palette//colors.css");
+
+.bg-side-nav-dark {
+    background-color: var(--dark-gray);
+    max-width: 28rem;
+    height: 100vh;
+    position: fixed;
+    top: 73px;
+    left: 0;
+    border-right: 1px solid var(--light-gray-shade);
+}
+
+.bg-side-nav-dark .nav-item:hover{
+    background-color: var(--lightish-gray-shade);
+}
+
+.bg-side-nav-dark .nav-item {
+    display: flex;
+    padding: 1rem;
+    gap: 1.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.bg-side-nav-dark .nav-item i {
+    color: var(--white-smoke);
+}
+
+.bg-side-nav-dark .nav-item i:hover {
+    color: inherit;
+}
+

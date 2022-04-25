@@ -1,0 +1,31 @@
+@import url("../../components/color-palette/colors.css");
+
+.videos-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.explore-container {
+    display: flex;
+    background-color: var(--light-black-shade);
+    height: calc(100vh - 73px);
+}
+
+.explore-content {
+    margin: 1rem auto;
+}
+
+.explore-content div button {
+    margin: 0 1rem 1rem 0;
+}
+
+.filter-container {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
