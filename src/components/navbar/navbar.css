@@ -1,13 +1,8 @@
-:root {
-    --dark-nav-bg: #272b33;
-    --dark-bg: #0a0c10;
-    --side-nav-hover: #202124;
-}
+@import url("../color-palette/colors.css");
 
 .bg-dark {
-    /* background-color: var(--dark-nav-bg); */
-    background-color: var(--side-nav-hover);
-    border-bottom: 1px solid var(--dark-nav-bg);
+    background-color: var(--dark-gray);
+    border-bottom: 1px solid var(--light-gray-shade);
 }
 
 .nav {
@@ -29,21 +24,21 @@
     display: flex;
     flex-grow: 1;
     margin: 0 1rem;
-    border: 1px solid #2e3238;
+    border: 1px solid var(--lightish-gray-shade);
 }
 
 .nav .search-box input {
     width: 100%;
     font-size: 1rem;
-    background-color: #121212;
+    background-color: var(--dark-black);
     padding: 0.4rem;
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .nav .search-box .search-btn {
     padding: 0.4rem;
-    background-color: #1e1d1d;
-    color: whitesmoke;
+    background-color: var( --dark-black);
+    color: var(--white-smoke);
 }
 
 .nav .search-box .search-btn i:hover {
@@ -52,7 +47,7 @@
 }
 
 .brand-name, .user-section > .user-name, .user-section i  {
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .nav .user-section i {

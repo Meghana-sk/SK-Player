@@ -4,14 +4,12 @@
     max-width: 28rem;
     height: 22rem;
     background-color: transparent;
-    /* margin-bottom: 30px; */
     cursor: pointer;
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .thumbnail-container {
     height: 70%;
-    /* background-color: aqua; */
 }
 
 .thumbnail-container img {
@@ -23,11 +21,8 @@
 
 .video-details {
     display: flex;
-    /* flex-direction: column; */
-    /* align-items: center; */
     margin: 8px auto;
     gap: 0.5rem;
-	/* width: calc(100%-16px); */
 }
 
 .videoDetails h6 {
@@ -35,7 +30,6 @@
 }
 
 .channel-container {
-    /* background-color: red; */
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -57,20 +51,15 @@
     margin: 0 8px;
 }
 
-/* .video-all-details .title {
-    display: flex;
-    flex-direction: column;
-} */
-
 .video-all-details .video-title {
     line-height: 18px;
     font-size: 14px;
     margin-bottom: 6px;
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .video-all-details > .channel-name {
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .video-actions span {
@@ -84,7 +73,7 @@
     cursor: pointer;
     margin-right: 8px;
     margin-bottom: auto;
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .more-option i:hover {

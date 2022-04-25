@@ -1,9 +1,10 @@
-import "./sideNav.css";
 import { NavLink } from "react-router-dom";
+import "./sideNav.css";
 
 const getActiveStyle = ({ isActive }) => ({
   margin: "1rem 0",
-  color: isActive ? "white" : "blue",
+  backgroundColor: isActive ? "#2e3238" : null,
+  color: "whitesmoke",
 });
 export const SideNav = () => {
   return (

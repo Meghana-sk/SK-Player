@@ -1,21 +1,17 @@
-:root {
-    --side-nav-bg:#2e3238;
-     /* #7a828e; */
-    --side-nav-hover: #202124;
-}
+@import url("../color-palette//colors.css");
 
 .bg-side-nav-dark {
-    background-color: var(--side-nav-hover);
+    background-color: var(--dark-gray);
     max-width: 28rem;
     height: 100vh;
     position: fixed;
     top: 73px;
     left: 0;
-    border-right: 1px solid #272b33;
+    border-right: 1px solid var(--light-gray-shade);
 }
 
 .bg-side-nav-dark .nav-item:hover{
-    background-color: var(--side-nav-bg);
+    background-color: var(--lightish-gray-shade);
 }
 
 .bg-side-nav-dark .nav-item {
@@ -26,7 +22,7 @@
 }
 
 .bg-side-nav-dark .nav-item i {
-    color: whitesmoke;
+    color: var(--white-smoke);
 }
 
 .bg-side-nav-dark .nav-item i:hover {

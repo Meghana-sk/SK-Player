@@ -1,0 +1,16 @@
+:root {
+    /* Black and gray shades */
+    --light-gray-shade: #272b33;
+    --darker-black: #0a0c10;
+    --dark-gray: #202124;
+    --dark-black: #121212;
+    --light-black-shade: #1c1d21;
+    --lightish-gray-shade:#2e3238;
+    --dark-black: #1e1d1d;
+
+     /* White shades */
+    --white-smoke: whitesmoke;
+
+     /* Blue shades */
+    --light-blue: #3498db;
+}
