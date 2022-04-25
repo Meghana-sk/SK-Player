@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const isUser = false;
   return (
     <nav className="nav bg-dark">
@@ -21,7 +22,10 @@ export const Navbar = () => {
             <i className="fas fa-user"></i>
           </>
         ) : (
-          <button className="btn btn-primary login-btn">
+          <button
+            className="btn btn-primary login-btn"
+            onClick={() => navigate("/login")}
+          >
             <i className="fas fa-user"></i>
             Login
           </button>

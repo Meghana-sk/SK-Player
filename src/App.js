@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar/Navbar";
 import { Explore } from "./pages/explore/Explore";
 import { Error404 } from "./pages/page-not-found/Error404";
+import { Login } from "./pages/authentication/Login";
+import { Signup } from "./pages/authentication/Signup";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Explore />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
