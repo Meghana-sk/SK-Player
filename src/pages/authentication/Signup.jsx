@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/authentication/auth-context";
 import { SIGNUP } from "../../shared/types";
 
@@ -47,31 +48,31 @@ export const Signup = () => {
       const { email, password, firstName, lastName } = user;
       try {
         const response = await axios.post("/api/auth/signup", {
-          email,
-          password,
-          firstName,
-          lastName,
+          email: email,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
         });
-        if (response === 201) {
+        if (response.status === 201) {
           localStorage.setItem("token", response.data.encodedToken);
           authDispatch({
             type: SIGNUP,
             payload: {
-              user: response.data.foundUser,
+              user: response.data.createdUser,
               token: response.data.encodedToken,
             },
           });
-          navigate("/");
+          toast.success("Successfully signed up");
+          navigate("/", { replace: true });
         }
       } catch (error) {
-        console.log(error.response);
-        // alert(error.response);
+        toast.error(error.response);
       }
     }
   };
   return (
     <>
-      <form className="auth-container">
+      <form className="auth-container" onSubmit={(e) => signupHandler(e)}>
         <h2 className="white-font">Signup</h2>
         <label htmlFor="first-name" className="text-left white-font">
           First name
@@ -133,7 +134,7 @@ export const Signup = () => {
           required
           onChange={userConfirmPasswordHandler}
         />
-        <button className="btn btn-primary" onClick={signupHandler}>
+        <button className="btn btn-primary" type="submit">
           Signup
         </button>
         <p className="white-font">Already have an account?</p>

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./authentication.css";
 import { useAuth } from "../../context/authentication/auth-context";
 import { LOGIN } from "../../shared/types";
@@ -21,9 +22,19 @@ export const Login = () => {
     setUser({ ...user, password: event.target.value });
   };
 
-  const guestUserHandler = () => {
-    setUser({ email: "guest@gmail.com", password: "guest@123" });
-    navigate("/");
+  const guestUserHandler = async (e) => {
+    setUser({ email: "adarshbalika@gmail.com", password: "adarshBalika123" });
+    try {
+      const response = await axios.post("/api/auth/login", {
+        email: user.email,
+        password: user.password,
+      });
+      if (response.status === 200) {
+        toast.success("Logged in as guest");
+        localStorage.setItem("token", response.data.encodedToken);
+        navigate("/");
+      }
+    } catch (error) {}
   };
 
   const loginHandler = async (event) => {
@@ -31,8 +42,13 @@ export const Login = () => {
 
     if (user.email && user.password) {
       try {
-        const response = await axios.post("/api/auth/login", user);
-        if (response === 200) {
+        const response = await axios.post("/api/auth/login", {
+          email: user.email,
+          password: user.password,
+        });
+        if (response.status === 200) {
+          toast.success("Logged in successfully");
+          navigate("/");
           localStorage.setItem("token", response.data.encodedToken);
           authDispatch({
             type: LOGIN,
@@ -41,16 +57,17 @@ export const Login = () => {
               token: response.data.encodedToken,
             },
           });
-          navigate("/");
+        } else {
+          toast.error("Please try logging in again");
         }
       } catch (error) {
-        alert(error.response);
+        toast.error(error.response.data.errors[0]);
       }
     }
   };
   return (
     <>
-      <form className="auth-container">
+      <form className="auth-container" onSubmit={(e) => loginHandler(e)}>
         <h2 className="white-font">Login</h2>
         <label htmlFor="email" className="text-left white-font">
           Email
@@ -78,9 +95,7 @@ export const Login = () => {
           value={user.password}
           onChange={userPasswordHandler}
         />
-        <button className="btn btn-primary" onClick={loginHandler}>
-          Login
-        </button>
+        <button className="btn btn-primary">Login</button>
         <button className="btn btn-secondary" onClick={guestUserHandler}>
           Login as guest
         </button>

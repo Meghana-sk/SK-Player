@@ -12,7 +12,6 @@ export const Explore = () => {
     try {
       const response = await axios.get("/api/videos");
       if (response.status === 200) {
-        console.log(response.data.videos);
         setVideoList(response.data.videos);
         setLoading(false);
       } else {
