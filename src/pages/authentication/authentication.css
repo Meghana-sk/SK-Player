@@ -1,0 +1,20 @@
+@import url("../../components/color-palette/colors.css");
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    max-width: 30rem;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    border: 1px solid var(--light-gray-shade);
+    background-color: var( --dark-gray);
+}
+
+.white-font {
+    color: var(--white-smoke);
+}
+
+.auth-container .signup-btn {
+    padding: 5px;
+}
