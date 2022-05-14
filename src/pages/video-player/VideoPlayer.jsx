@@ -120,11 +120,6 @@ export const VideoPlayer = () => {
             </div>
           </div>
         </div>
-        {/* <div className="notes-container">
-          <h5>Notes</h5>
-          <textarea></textarea>
-          <button className="btn btn-primary">Add note</button>
-        </div> */}
       </section>
     </div>
   );
