@@ -25,7 +25,7 @@ export const SideNav = () => {
           <span>Playlist</span>
         </div>
       </NavLink>
-      <NavLink to="/" style={getActiveStyle}>
+      <NavLink to="/watchlater" style={getActiveStyle}>
         <div className="nav-item">
           <span>
             <i className="far fa-clock"></i>

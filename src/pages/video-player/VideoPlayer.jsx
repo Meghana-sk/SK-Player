@@ -10,7 +10,11 @@ import { SideNav } from "../../components/side-nav/SideNav";
 import "./videoplayer.css";
 import { useAuth } from "../../context/authentication/auth-context";
 import { useLike } from "../../context/like-video/like-video-context";
-import { UPDATE_LIKED_VIDEOS } from "../../shared/types";
+import {
+  UPDATE_LIKED_VIDEOS,
+  UPDATE_WATCH_LATER_VIDEOS,
+} from "../../shared/types";
+import { useWatchLater } from "../../context/watch-later/watch-later-context";
 
 export const VideoPlayer = () => {
   const { videoId } = useParams();
@@ -21,9 +25,16 @@ export const VideoPlayer = () => {
   const navigate = useNavigate();
 
   const { likeState, likeDispatch } = useLike();
+  const { watchLaterState, watchLaterDispatch } = useWatchLater();
 
   const isVideoAlreadyLiked = likeState.likes.length
     ? likeState.likes.find((likedVideo) => likedVideo._id === videoId)
+    : false;
+
+  const isVideoAlreadyInWatchLater = watchLaterState.watchlater.length
+    ? watchLaterState.watchlater.find(
+        (watchLaterVideo) => watchLaterVideo._id === videoId
+      )
     : false;
 
   const likeVideoHandler = async () => {
@@ -60,6 +71,49 @@ export const VideoPlayer = () => {
               payload: response.data.likes,
             });
             toast.info("Removed from liked videos");
+          }
+        }
+      }
+    } catch (error) {}
+  };
+
+  const watchVideoLaterHandler = async () => {
+    try {
+      if (!token) {
+        navigate("/login");
+      } else {
+        if (!isVideoAlreadyInWatchLater) {
+          const response = await axios.post(
+            "/api/user/watchlater",
+            { video },
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          if (response.status === 201) {
+            watchLaterDispatch({
+              type: UPDATE_WATCH_LATER_VIDEOS,
+              payload: response.data.watchlater,
+            });
+            toast.success("Added to watch later videos");
+          }
+        } else {
+          const response = await axios.delete(
+            `/api/user/watchlater/${videoId}`,
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          if (response.status === 200) {
+            watchLaterDispatch({
+              type: UPDATE_WATCH_LATER_VIDEOS,
+              payload: response.data.watchlater,
+            });
+            toast.info("Removed from watch later videos");
           }
         }
       }
@@ -106,7 +160,13 @@ export const VideoPlayer = () => {
                 } `}
                 onClick={likeVideoHandler}
               />
-              <BsBookmarkPlus className="react-icons" size="1.5em" />
+              <BsBookmarkPlus
+                className={`react-icons ${
+                  isVideoAlreadyInWatchLater ? "liked-watchlater-active" : null
+                } `}
+                onClick={watchVideoLaterHandler}
+                size="1.5em"
+              />
               <RiPlayListAddLine className="react-icons" size="1.5em" />
             </div>
             <div className="channel-details">
