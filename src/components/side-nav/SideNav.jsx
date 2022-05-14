@@ -33,7 +33,7 @@ export const SideNav = () => {
           <span>Watch later</span>
         </div>
       </NavLink>
-      <NavLink to="/" style={getActiveStyle}>
+      <NavLink to="/liked" style={getActiveStyle}>
         <div className="nav-item">
           <span>
             <i className="far fa-thumbs-up"></i>

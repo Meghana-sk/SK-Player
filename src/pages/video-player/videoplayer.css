@@ -1,0 +1,42 @@
+.video-plus-notes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.video-impressions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.like-views {
+    display: flex;
+    margin-right: auto;
+    gap: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.channel-details {
+    border-radius: 50%;
+    align-self: center;
+    margin-left: 8px;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.react-icons {
+    color:whitesmoke;
+    cursor: pointer;
+}
+
+.react-icons:hover {
+    color: var(--primary-blue);
+}

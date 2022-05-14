@@ -5,10 +5,10 @@
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
+    _id: "jQsE85cI384",
     title:
       "KGF Chapter 2 Trailer | Kannada |Yash|Sanjay Dutt|Raveena|Srinidhi|Prashanth Neel|Vijay Kiragandur",
-    videoDuration: "2:49",
+    videoDuration: "2:56",
     views: "102M",
     uploadedTime: "4 weeks ago",
     category: "action",
@@ -18,7 +18,7 @@ export const videos = [
     videoThumbnail: "https://i.ytimg.com/vi/JKa05nyUmuQ/hq720.jpg",
   },
   {
-    _id: "F_Riqjdh2oM",
+    _id: "VSaEdshUCzA",
     title:
       "THE NUN - Hollywood Movies In Hindi Dubbed Full HD | Horror Movie In Hindi | Hollywood Horror Movie",
     videoDuration: "1:25:02",
