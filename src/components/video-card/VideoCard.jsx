@@ -15,8 +15,8 @@ export const VideoCard = ({
     navigate(`/video/${_id}`);
   };
   return (
-    <article className="video-card" key={_id} onClick={videoPlayHandler}>
-      <div className="thumbnail-container">
+    <article className="video-card" key={_id}>
+      <div className="thumbnail-container" onClick={videoPlayHandler}>
         <img
           src={videoThumbnail}
           alt="video-thumbnail"

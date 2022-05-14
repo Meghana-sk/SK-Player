@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { RiPlayListAddLine } from "react-icons/ri";
+import { toast } from "react-toastify";
 import { SideNav } from "../../components/side-nav/SideNav";
 import "./videoplayer.css";
 import { useAuth } from "../../context/authentication/auth-context";
@@ -19,32 +20,47 @@ export const VideoPlayer = () => {
   } = useAuth();
   const navigate = useNavigate();
 
-  const {
-    likeState: { likeData },
-    likeDispatch,
-  } = useLike();
+  const { likeState, likeDispatch } = useLike();
+
+  const isVideoAlreadyLiked = likeState.likes.length
+    ? likeState.likes.find((likedVideo) => likedVideo._id === videoId)
+    : false;
 
   const likeVideoHandler = async () => {
     try {
       if (!token) {
         navigate("/login");
       } else {
-        console.log("videoin player", video);
-        const response = await axios.post(
-          "/api/user/likes",
-          { video },
-          {
+        if (!isVideoAlreadyLiked) {
+          const response = await axios.post(
+            "/api/user/likes",
+            { video },
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          if (response.status === 201) {
+            likeDispatch({
+              type: UPDATE_LIKED_VIDEOS,
+              payload: response.data.likes,
+            });
+            toast.success("Added to liked videos");
+          }
+        } else {
+          const response = await axios.delete(`/api/user/likes/${videoId}`, {
             headers: {
               authorization: token,
             },
-          }
-        );
-        if (response.status === 201) {
-          console.log(response);
-          likeDispatch({
-            type: UPDATE_LIKED_VIDEOS,
-            payload: response.data.likes,
           });
+          if (response.status === 200) {
+            likeDispatch({
+              type: UPDATE_LIKED_VIDEOS,
+              payload: response.data.likes,
+            });
+            toast.info("Removed from liked videos");
+          }
         }
       }
     } catch (error) {}
@@ -60,12 +76,10 @@ export const VideoPlayer = () => {
           );
           setVideo(videoData);
         }
-      } catch (error) {
-        console.log(error.response);
-      }
+      } catch (error) {}
     };
     fetchVideos();
-  }, [video]);
+  }, [videoId]);
   return (
     <div className="video-player-container">
       <SideNav />
@@ -77,38 +91,40 @@ export const VideoPlayer = () => {
             playing={true}
             muted={true}
             className="video-player"
-            width="100%"
-            height="100%"
           />
           <div className="video-info">
-            <h3>KGF</h3>
+            <h3 className="video-title">{video.title}</h3>
             <div className="video-impressions">
               <div className="like-views">
-                <p>100M views</p>
-                <p>1245677 likes</p>
+                <p>{video.views} views</p>
+                <p>{video.uploadedTime}</p>
               </div>
               <AiOutlineLike
-                className="react-icons"
+                size="1.5em"
+                className={`react-icons ${
+                  isVideoAlreadyLiked ? "liked-watchlater-active" : null
+                } `}
                 onClick={likeVideoHandler}
               />
-              <BsBookmarkPlus className="react-icons" />
-              <RiPlayListAddLine className="react-icons" />
+              <BsBookmarkPlus className="react-icons" size="1.5em" />
+              <RiPlayListAddLine className="react-icons" size="1.5em" />
             </div>
             <div className="channel-details">
               <img
-                src=""
+                src={video.channelProfile}
                 alt="profile"
                 className="channel-img"
                 loading="lazy"
               />
+              <p>{video.channel}</p>
             </div>
           </div>
         </div>
-        <div className="notes-container">
+        {/* <div className="notes-container">
           <h5>Notes</h5>
           <textarea></textarea>
           <button className="btn btn-primary">Add note</button>
-        </div>
+        </div> */}
       </section>
     </div>
   );

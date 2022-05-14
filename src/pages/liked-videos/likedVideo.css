@@ -1,0 +1,13 @@
+.like-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.like-page-container p {
+    margin:  0 auto;
+}
