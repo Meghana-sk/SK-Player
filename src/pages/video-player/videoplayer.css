@@ -1,14 +1,11 @@
 .video-plus-notes-container {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-wrap: wrap;
     gap: 3rem;
     padding: 1rem;
     max-width: 45rem;
     margin-left: 200px;
-    /* margin-right: auto; */
-    overflow-y: scroll;
 }
 
 .video-impressions {
@@ -18,8 +15,15 @@
     justify-content: flex-end;
 }
 
+.react-player-container {
+    position: relative;
+    padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */    
+}
+
 .video-player  {
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .video-title {

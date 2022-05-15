@@ -11,10 +11,12 @@ import "./videoplayer.css";
 import { useAuth } from "../../context/authentication/auth-context";
 import { useLike } from "../../context/like-video/like-video-context";
 import {
+  UPDATE_HISTORY,
   UPDATE_LIKED_VIDEOS,
   UPDATE_WATCH_LATER_VIDEOS,
 } from "../../shared/types";
 import { useWatchLater } from "../../context/watch-later/watch-later-context";
+import { useHistory } from "../../context/history/history-context";
 
 export const VideoPlayer = () => {
   const { videoId } = useParams();
@@ -26,6 +28,7 @@ export const VideoPlayer = () => {
 
   const { likeState, likeDispatch } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
+  const { historyDispatch } = useHistory();
 
   const isVideoAlreadyLiked = likeState.likes.length
     ? likeState.likes.find((likedVideo) => likedVideo._id === videoId)
@@ -134,18 +137,46 @@ export const VideoPlayer = () => {
     };
     fetchVideos();
   }, [videoId]);
+
+  const addVideoToHistory = async () => {
+    try {
+      if (token) {
+        const response = await axios.post(
+          "/api/user/history",
+          { video },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        if (response.status === 201) {
+          historyDispatch({
+            type: UPDATE_HISTORY,
+            payload: response.data.history,
+          });
+        }
+      }
+    } catch (error) {}
+  };
+
   return (
     <div className="video-player-container">
       <SideNav />
       <section className="video-plus-notes-container">
         <div className="video-container">
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${videoId}`}
-            controls={true}
-            playing={true}
-            muted={true}
-            className="video-player"
-          />
+          <div className="react-player-container">
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${videoId}`}
+              controls={true}
+              playing={true}
+              muted={true}
+              width="100%"
+              height="100%"
+              onReady={addVideoToHistory}
+              className="video-player"
+            />
+          </div>
           <div className="video-info">
             <h3 className="video-title">{video.title}</h3>
             <div className="video-impressions">

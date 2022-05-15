@@ -10,6 +10,7 @@ import { Signup } from "./pages/authentication/Signup";
 import { VideoPlayer } from "./pages/video-player/VideoPlayer";
 import { LikedVideos } from "./pages/liked-videos/LikedVideos";
 import { WatchLater } from "./pages/watch-later/WatchLater";
+import { History } from "./pages/history/History";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/video/:videoId" element={<VideoPlayer />} />
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/watchlater" element={<WatchLater />} />
+        <Route path="/history" element={<History />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
