@@ -11,12 +11,12 @@ import "./videoplayer.css";
 import { useAuth } from "../../context/authentication/auth-context";
 import { useLike } from "../../context/like-video/like-video-context";
 import {
-  UPDATE_HISTORY,
   UPDATE_LIKED_VIDEOS,
   UPDATE_WATCH_LATER_VIDEOS,
 } from "../../shared/types";
 import { useWatchLater } from "../../context/watch-later/watch-later-context";
 import { useHistory } from "../../context/history/history-context";
+import { addVideoToHistory } from "../../services/history/history.service";
 
 export const VideoPlayer = () => {
   const { videoId } = useParams();
@@ -138,27 +138,27 @@ export const VideoPlayer = () => {
     fetchVideos();
   }, [videoId]);
 
-  const addVideoToHistory = async () => {
-    try {
-      if (token) {
-        const response = await axios.post(
-          "/api/user/history",
-          { video },
-          {
-            headers: {
-              authorization: token,
-            },
-          }
-        );
-        if (response.status === 201) {
-          historyDispatch({
-            type: UPDATE_HISTORY,
-            payload: response.data.history,
-          });
-        }
-      }
-    } catch (error) {}
-  };
+  // const addVideoToHistory = async () => {
+  //   try {
+  //     if (token) {
+  //       const response = await axios.post(
+  //         "/api/user/history",
+  //         { video },
+  //         {
+  //           headers: {
+  //             authorization: token,
+  //           },
+  //         }
+  //       );
+  //       if (response.status === 201) {
+  //         historyDispatch({
+  //           type: UPDATE_HISTORY,
+  //           payload: response.data.history,
+  //         });
+  //       }
+  //     }
+  //   } catch (error) {}
+  // };
 
   return (
     <div className="video-player-container">
@@ -173,7 +173,7 @@ export const VideoPlayer = () => {
               muted={true}
               width="100%"
               height="100%"
-              onReady={addVideoToHistory}
+              onReady={() => addVideoToHistory(token, video, historyDispatch)}
               className="video-player"
             />
           </div>

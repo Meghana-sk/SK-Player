@@ -2,6 +2,28 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { UPDATE_HISTORY, CLEAR_HISTORY } from "../../shared/types";
 
+const addVideoToHistory = async (token, video, historyDispatch) => {
+  try {
+    if (token) {
+      const response = await axios.post(
+        "/api/user/history",
+        { video },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      if (response.status === 201) {
+        historyDispatch({
+          type: UPDATE_HISTORY,
+          payload: response.data.history,
+        });
+      }
+    }
+  } catch (error) {}
+};
+
 const deleteVideoFromHistory = async (videoId, token, historyDispatch) => {
   try {
     const response = await axios.delete(`api/user/history/${videoId}`, {
@@ -37,4 +59,4 @@ const deleteAllVideoFromHistory = async (
   } catch (error) {}
 };
 
-export { deleteVideoFromHistory, deleteAllVideoFromHistory };
+export { addVideoToHistory, deleteVideoFromHistory, deleteAllVideoFromHistory };
