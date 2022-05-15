@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./video-card.css";
 
 export const VideoCard = ({
@@ -9,9 +10,13 @@ export const VideoCard = ({
   uploadedTime,
   views,
 }) => {
+  const navigate = useNavigate();
+  const videoPlayHandler = () => {
+    navigate(`/video/${_id}`);
+  };
   return (
     <article className="video-card" key={_id}>
-      <div className="thumbnail-container">
+      <div className="thumbnail-container" onClick={videoPlayHandler}>
         <img
           src={videoThumbnail}
           alt="video-thumbnail"

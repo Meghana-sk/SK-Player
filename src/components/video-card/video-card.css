@@ -4,12 +4,12 @@
     max-width: 28rem;
     height: 22rem;
     background-color: transparent;
-    cursor: pointer;
     color: var(--white-smoke);
 }
 
 .thumbnail-container {
     height: 70%;
+    cursor: pointer;
 }
 
 .thumbnail-container img {
@@ -31,8 +31,6 @@
 
 .channel-container {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     align-self: center;
     margin-left: 8px;
 }
