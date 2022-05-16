@@ -17,7 +17,7 @@ export const SideNav = () => {
           <span>Explore</span>
         </div>
       </NavLink>
-      <NavLink to="/" style={getActiveStyle}>
+      <NavLink to="/playlist" style={getActiveStyle}>
         <div className="nav-item">
           <span>
             <i className="fas fa-list-ul"></i>

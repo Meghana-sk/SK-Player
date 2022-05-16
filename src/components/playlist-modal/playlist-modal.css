@@ -1,0 +1,50 @@
+.playlist-modal {
+    z: 9999;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    padding: 0.5rem;
+    transform: translate(-50%, -50%);
+    background-color: var(--light-black-shade);
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.divider {
+    color: red;
+    border: 1px solid blue;
+}
+
+.create-playlist-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-smoke);
+    cursor: pointer;
+    border: 1px solid var(--white-smoke);
+}
+
+.modal-body{
+    color: var(--white-smoke);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 1rem;
+}
+
+.playlist-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

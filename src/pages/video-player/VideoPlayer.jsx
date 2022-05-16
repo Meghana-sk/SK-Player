@@ -7,6 +7,7 @@ import { BsBookmarkPlus } from "react-icons/bs";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { SideNav } from "../../components/side-nav/SideNav";
+import { PlaylistModal } from "../../components/playlist-modal/PlaylistModal";
 import "./videoplayer.css";
 import { useAuth } from "../../context/authentication/auth-context";
 import { useLike } from "../../context/like-video/like-video-context";
@@ -21,6 +22,7 @@ import { addVideoToHistory } from "../../services/history/history.service";
 export const VideoPlayer = () => {
   const { videoId } = useParams();
   const [video, setVideo] = useState({});
+  const [modalOpen, setModalOpen] = useState(false);
   const {
     authState: { token },
   } = useAuth();
@@ -198,7 +200,13 @@ export const VideoPlayer = () => {
                 onClick={watchVideoLaterHandler}
                 size="1.5em"
               />
-              <RiPlayListAddLine className="react-icons" size="1.5em" />
+              <RiPlayListAddLine
+                className="react-icons"
+                size="1.5em"
+                onClick={() => {
+                  setModalOpen(true);
+                }}
+              />
             </div>
             <div className="channel-details">
               <img
@@ -211,6 +219,7 @@ export const VideoPlayer = () => {
             </div>
           </div>
         </div>
+        {modalOpen && <PlaylistModal setOpenModal={setModalOpen} />}
       </section>
     </div>
   );

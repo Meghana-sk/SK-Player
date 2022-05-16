@@ -11,6 +11,8 @@ import { VideoPlayer } from "./pages/video-player/VideoPlayer";
 import { LikedVideos } from "./pages/liked-videos/LikedVideos";
 import { WatchLater } from "./pages/watch-later/WatchLater";
 import { History } from "./pages/history/History";
+import { Playlist } from "./pages/playlist/Playlist";
+import { PlaylistVideo } from "./pages/playlist/PlaylistVideos";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path="/liked" element={<LikedVideos />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/history" element={<History />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlist/:playlistId" element={<PlaylistVideo />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
