@@ -1,3 +1,64 @@
+import { Fragment } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { usePlaylist } from "../../context/playlist/playlist-context";
+import { VideoCard } from "../../components/video-card/VideoCard";
+import { UPDATE_PLAYLISTS } from "../../shared/types";
+import { useAuth } from "../../context/authentication/auth-context";
+import { toast } from "react-toastify";
+
 export const PlaylistVideo = () => {
-  return;
+  const { playlistId } = useParams();
+  const {
+    playlistState: { playlists },
+    playlistDispatch,
+  } = usePlaylist();
+
+  const {
+    authState: { token },
+  } = useAuth();
+
+  const activePlaylist = playlists.find((item) => item._id === playlistId);
+
+  const deleteVideoFromPlaylistHandler = async (e) => {
+    try {
+      const response = await axios.delete(
+        `/api/user/playlists/${activePlaylist._id}/${e.target.id}`,
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      if (response.status === 200) {
+        playlistDispatch({
+          type: UPDATE_PLAYLISTS,
+          playlists: response.data.playlists,
+        });
+        toast.info(`removed successfully`);
+      }
+    } catch (error) {}
+  };
+
+  return (
+    <div>
+      <Fragment key={activePlaylist._id}>
+        <h2>{activePlaylist.title}</h2>
+        <div>
+          {activePlaylist.videos.length ? (
+            activePlaylist.videos.map((video) => (
+              <div>
+                <VideoCard {...video} />
+                <button onClick={deleteVideoFromPlaylistHandler} id={video._id}>
+                  Delete
+                </button>
+              </div>
+            ))
+          ) : (
+            <h2>Playlist empty</h2>
+          )}
+        </div>
+      </Fragment>
+    </div>
+  );
 };

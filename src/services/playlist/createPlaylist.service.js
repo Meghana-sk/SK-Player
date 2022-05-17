@@ -14,7 +14,6 @@ const createPlaylist = async ({ requestBody, token, playlistDispatch }) => {
         payload: response.data.playlists,
       });
     }
-    console.log("--", response);
   } catch (error) {}
 };
 

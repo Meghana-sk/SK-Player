@@ -219,7 +219,9 @@ export const VideoPlayer = () => {
             </div>
           </div>
         </div>
-        {modalOpen && <PlaylistModal setModalOpen={setModalOpen} />}
+        {modalOpen && (
+          <PlaylistModal setModalOpen={setModalOpen} video={video} />
+        )}
       </section>
     </div>
   );
