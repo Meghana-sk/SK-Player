@@ -22,16 +22,13 @@ export const PlaylistModal = ({ setModalOpen }) => {
         return playlists;
       }
     });
-    createPlaylist(
-      {
-        playlist: {
-          title: playlistName,
-          description: `Playlist name ${playlistName}`,
-        },
+    const requestBody = {
+      playlist: {
+        title: playlistName,
+        description: `Playlist name ${playlistName}`,
       },
-      token,
-      playlistDispatch
-    );
+    };
+    createPlaylist({ requestBody, token, playlistDispatch });
   };
   const playlistNameHandler = (e) => {
     setPlaylistName(() => e.target.value);
