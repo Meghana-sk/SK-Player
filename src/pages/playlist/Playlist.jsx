@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Fragment } from "react";
 import { toast } from "react-toastify";
 import "./playlist.css";
 import { useAuth } from "../../context/authentication/auth-context";
@@ -38,17 +37,26 @@ export const Playlist = () => {
       <h2>Playlist name</h2>
       {playlistState.playlists.length > 0 ? (
         playlistState.playlists.map((list) => (
-          <Fragment key={list._id}>
+          <div key={list._id} className="playlist-container">
             <div onClick={() => navigate(`/playlist/${list._id}`)}>
               <div className="playlist text-left">{list.title}</div>
             </div>
-            <button onClick={deletePlaylistHandler} id={list._id}>
-              Delete
+            <button
+              onClick={deletePlaylistHandler}
+              id={list._id}
+              className="btn btn-float delete-video"
+            >
+              <i className="fas fa-trash"></i>
             </button>
-          </Fragment>
+          </div>
         ))
       ) : (
-        <h3>No playlists found</h3>
+        <div className="empty-box">
+          <h3>No playlists found</h3>
+          <button onClick={() => navigate("/")} className="btn btn-primary">
+            Explore videos
+          </button>
+        </div>
       )}
     </div>
   );

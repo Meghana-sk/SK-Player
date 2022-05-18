@@ -38,7 +38,7 @@ export const Explore = () => {
           <button className="btn btn-secondary">Action</button>
         </div>
         {isLoading && <CircularLoader />}
-        <div className="videos-container" key={""}>
+        <div className="videos-container" key={videoList}>
           {videoList.map((video) => (
             <VideoCard {...video} />
           ))}

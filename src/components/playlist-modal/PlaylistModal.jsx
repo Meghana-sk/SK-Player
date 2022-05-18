@@ -80,45 +80,50 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
 
   return (
     <article className="playlist-modal">
-      <header className="heading">
-        <h3>Save to</h3>
-        <button onClick={() => setModalOpen(false)}>
-          <AiOutlineClose />
-        </button>
-      </header>
-      <div className="divider"></div>
-      <section className="modal-body">
-        {playlists.length > 0
-          ? playlists.map((el) => (
-              <div>
-                <input
-                  type="checkbox"
-                  id={el._id}
-                  onChange={playlistCheckBoxHandler}
-                  checked={IsVideoInCurrentPlaylist(
-                    playlists,
-                    video._id,
-                    el._id
-                  )}
-                />
-                <label htmlFor={el._id}>{el.title}</label>
-              </div>
-            ))
-          : null}
-      </section>
-      <div className="divider"></div>
-      <footer className="playlist-footer">
-        <input
-          placeholder="playlist-name"
-          onChange={playlistNameHandler}
-          className="input-text"
-          type="text"
-        />
-        <div className="create-playlist-wrapper" onClick={createNewPlaylist}>
-          <AiOutlinePlus />
-          Create playlist
-        </div>
-      </footer>
+      <div className="modal">
+        <header className="heading">
+          <h3>Save to...</h3>
+          <button
+            className="btn btn-float close-playlist-popup"
+            onClick={() => setModalOpen(false)}
+          >
+            <AiOutlineClose />
+          </button>
+        </header>
+        <div className="divider"></div>
+        <section className="modal-body">
+          {playlists.length > 0
+            ? playlists.map((el) => (
+                <div className="playlist-row">
+                  <input
+                    type="checkbox"
+                    id={el._id}
+                    onChange={playlistCheckBoxHandler}
+                    checked={IsVideoInCurrentPlaylist(
+                      playlists,
+                      video._id,
+                      el._id
+                    )}
+                  />
+                  <label htmlFor={el._id}>{el.title}</label>
+                </div>
+              ))
+            : null}
+        </section>
+        <div className="divider"></div>
+        <footer className="playlist-footer">
+          <input
+            placeholder="playlist-name"
+            onChange={playlistNameHandler}
+            className="input-text"
+            type="text"
+          />
+          <div className="create-playlist-wrapper" onClick={createNewPlaylist}>
+            <AiOutlinePlus />
+            Create playlist
+          </div>
+        </footer>
+      </div>
     </article>
   );
 };

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { usePlaylist } from "../../context/playlist/playlist-context";
 import { VideoCard } from "../../components/video-card/VideoCard";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 
 export const PlaylistVideo = () => {
   const { playlistId } = useParams();
+  const navigate = useNavigate();
   const {
     playlistState: { playlists },
     playlistDispatch,
@@ -47,15 +48,24 @@ export const PlaylistVideo = () => {
         <div>
           {activePlaylist.videos.length ? (
             activePlaylist.videos.map((video) => (
-              <div>
+              <div className="playlist-container">
                 <VideoCard {...video} />
-                <button onClick={deleteVideoFromPlaylistHandler} id={video._id}>
-                  Delete
+                <button
+                  onClick={deleteVideoFromPlaylistHandler}
+                  id={video._id}
+                  className="btn btn-float delete-video"
+                >
+                  <i className="fas fa-trash"></i>
                 </button>
               </div>
             ))
           ) : (
-            <h2>Playlist empty</h2>
+            <div className="empty-box">
+              <h3>No video in playlists found</h3>
+              <button onClick={() => navigate("/")} className="btn btn-primary">
+                Explore videos
+              </button>
+            </div>
           )}
         </div>
       </Fragment>

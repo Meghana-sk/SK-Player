@@ -1,3 +1,10 @@
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
 .playlist {
     color: var(--white-smoke);
     display: flex;
@@ -5,9 +12,18 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    border: 1px solid var(--white-smoke);
     width: 20rem;
-    margin-left: 500px;
     cursor: pointer;
-    margin-bottom: 50px;
+    border: 1px solid var(--white-smoke);
 }
+
+.delete-video {
+    width: 40px;
+    height: 40px;
+    background-color: var(--error-red);
+    color: var(--white-smoke)
+}
+
+.delete-video i:hover {
+    color: var(--white-smoke)
+} 

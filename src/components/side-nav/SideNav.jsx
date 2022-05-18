@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./sideNav.css";
 
-const getActiveStyle = ({ isActive }) => ({
-  margin: "1rem 0",
-  backgroundColor: isActive ? "#2e3238" : null,
-  color: "whitesmoke",
-});
+const getActiveStyle = ({ isActive }) =>
+  isActive
+    ? {
+        color: "whitesmoke",
+        fontWeight: "bold",
+      }
+    : { color: "whitesmoke" };
 export const SideNav = () => {
   return (
     <aside className="side-nav bg-side-nav-dark">
