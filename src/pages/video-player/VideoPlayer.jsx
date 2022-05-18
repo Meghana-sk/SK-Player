@@ -140,28 +140,6 @@ export const VideoPlayer = () => {
     fetchVideos();
   }, [videoId]);
 
-  // const addVideoToHistory = async () => {
-  //   try {
-  //     if (token) {
-  //       const response = await axios.post(
-  //         "/api/user/history",
-  //         { video },
-  //         {
-  //           headers: {
-  //             authorization: token,
-  //           },
-  //         }
-  //       );
-  //       if (response.status === 201) {
-  //         historyDispatch({
-  //           type: UPDATE_HISTORY,
-  //           payload: response.data.history,
-  //         });
-  //       }
-  //     }
-  //   } catch (error) {}
-  // };
-
   return (
     <div className="video-player-container">
       <SideNav />

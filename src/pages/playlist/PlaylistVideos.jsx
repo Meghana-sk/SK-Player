@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { usePlaylist } from "../../context/playlist/playlist-context";
 import { VideoCard } from "../../components/video-card/VideoCard";
-import { UPDATE_PLAYLISTS } from "../../shared/types";
+import { REMOVE_FROM_PLAYLISTS } from "../../shared/types";
 import { useAuth } from "../../context/authentication/auth-context";
 import { toast } from "react-toastify";
 
@@ -32,8 +32,8 @@ export const PlaylistVideo = () => {
       );
       if (response.status === 200) {
         playlistDispatch({
-          type: UPDATE_PLAYLISTS,
-          playlists: response.data.playlists,
+          type: REMOVE_FROM_PLAYLISTS,
+          payload: response.data.playlist,
         });
         toast.info(`removed successfully`);
       }

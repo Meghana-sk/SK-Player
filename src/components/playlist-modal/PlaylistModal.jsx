@@ -17,14 +17,10 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
   const { authState } = useAuth();
   const { token } = authState;
   const createNewPlaylist = () => {
-    // setPlaylists(() => {
     if (
       playlists.filter((e) => e.title === playlistName).length === 0 &&
       playlistName.length > 0
     ) {
-      //   return playlists.concat({ title: playlistName });
-      // } else {
-      //   return playlists;
       const requestBody = {
         playlist: {
           title: playlistName,
@@ -33,18 +29,14 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
       };
       createPlaylist({ requestBody, token, playlistDispatch });
     }
-    // }
-    // );
   };
   const playlistNameHandler = (e) => {
     setPlaylistName(() => e.target.value);
   };
 
   const playlistCheckBoxHandler = async (e) => {
-    console.log("playlist id", e.target.id, { video });
     try {
       if (e.target.checked) {
-        console.log("in playlist add");
         const response = await axios.post(
           `/api/user/playlists/${e.target.id}`,
           { video },
@@ -81,14 +73,9 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
 
   const IsVideoInCurrentPlaylist = (playlists, videoId, playlistId) => {
     const findPlaylist = playlists.find((item) => item._id === playlistId);
-    if (findPlaylist) {
-      return findPlaylist.videos.findIndex((item) => item._id === videoId) ===
-        -1
-        ? false
-        : true;
-    } else {
-      return false;
-    }
+    return findPlaylist
+      ? !(findPlaylist.videos.findIndex((item) => item._id === videoId) === -1)
+      : false;
   };
 
   return (

@@ -30,7 +30,6 @@ export const Playlist = () => {
         });
       }
       toast.info(`${e.target.title} deleted successfully`);
-      console.log("----------------", response);
     } catch (error) {}
   };
   return (
