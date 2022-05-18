@@ -182,7 +182,7 @@ export const VideoPlayer = () => {
                 className="react-icons"
                 size="1.5em"
                 onClick={() => {
-                  setModalOpen(true);
+                  token ? setModalOpen(true) : navigate("/login");
                 }}
               />
             </div>
