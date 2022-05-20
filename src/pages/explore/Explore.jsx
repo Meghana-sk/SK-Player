@@ -62,40 +62,44 @@ export const Explore = () => {
       : videoList;
 
   return (
-    <div className="explore-container">
+    <>
       <SideNav />
-      <div className="explore-content">
-        <div className="filter-container">
-          <button
-            className={`btn btn-secondary ${
-              selectedCategory === "" ? "btn-category-active" : ""
-            }`}
-            onClick={() => handleCategoryClick()}
-          >
-            All
-          </button>
-          {categories.length > 0
-            ? categories.map((category) => (
-                <button
-                  className={`btn btn-secondary ${
-                    selectedCategory === category.categoryName
-                      ? "btn-category-active"
-                      : ""
-                  }`}
-                  onClick={() => handleCategoryClick(category.categoryName)}
-                >
-                  {category.categoryName}
-                </button>
-              ))
-            : null}
-        </div>
-        {isLoading && <CircularLoader />}
-        <div className="videos-container" key={videoList}>
-          {getCategorizedData().map((video) => (
-            <VideoCard {...video} />
-          ))}
+      <div className="explore-container">
+        <div className="explore-content" key={videoList}>
+          <div className="filter-container">
+            <button
+              className={`btn btn-secondary ${
+                selectedCategory === "" ? "btn-category-active" : ""
+              }`}
+              key={selectedCategory}
+              onClick={() => handleCategoryClick()}
+            >
+              All
+            </button>
+            {categories.length > 0
+              ? categories.map((category) => (
+                  <button
+                    className={`btn btn-secondary ${
+                      selectedCategory === category.categoryName
+                        ? "btn-category-active"
+                        : ""
+                    }`}
+                    key={category.categoryName}
+                    onClick={() => handleCategoryClick(category.categoryName)}
+                  >
+                    {category.categoryName}
+                  </button>
+                ))
+              : null}
+          </div>
+          {isLoading && <CircularLoader />}
+          <div className="videos-container" key={videoList}>
+            {getCategorizedData().map((video) => (
+              <VideoCard {...video} key={video._id} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

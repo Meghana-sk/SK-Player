@@ -23,7 +23,7 @@ export const Login = () => {
   };
 
   const guestUserHandler = async (e) => {
-    setUser({ email: "adarshbalika@gmail.com", password: "adarshBalika123" });
+    setUser({ email: "guest@gmail.com", password: "guest@123" });
     try {
       const response = await axios.post("/api/auth/login", {
         email: user.email,
@@ -31,8 +31,9 @@ export const Login = () => {
       });
       if (response.status === 200) {
         toast.success("Logged in as guest");
+        localStorage.setItem("user", "Guest");
         localStorage.setItem("token", response.data.encodedToken);
-        navigate("/");
+        navigate("/", { replace: true });
       }
     } catch (error) {}
   };
@@ -48,8 +49,9 @@ export const Login = () => {
         });
         if (response.status === 200) {
           toast.success("Logged in successfully");
-          navigate("/");
+          navigate("/", { replace: true });
           localStorage.setItem("token", response.data.encodedToken);
+          localStorage.setItem("user", response.data.firstName);
           authDispatch({
             type: LOGIN,
             payload: {
