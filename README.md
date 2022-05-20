@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="./public/favicon.ico" height="100" width="100" alt="intact-ui logo"/>
   <br />
 <h1>SK player</h1>
 <p font-size="10px">One stop for your favourite movies 
