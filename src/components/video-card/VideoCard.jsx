@@ -38,7 +38,7 @@ export const VideoCard = ({
           <h6 className="channel-name">{channel}</h6>
           <div className="video-actions">
             <span className="views">
-              {views} • {uploadedTime}
+              {views} views • {uploadedTime}
             </span>
           </div>
         </div>

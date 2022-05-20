@@ -1,4 +1,4 @@
-@import url("../color-palette//colors.css");
+@import url("../color-palette/colors.css");
 
 .bg-side-nav-dark {
     background-color: var(--dark-gray);
