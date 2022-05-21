@@ -69,3 +69,13 @@
     color: inherit;
 }
 
+@media(max-width: 768px) {
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .user-section {
+        margin-left: auto;
+    }
+}
+

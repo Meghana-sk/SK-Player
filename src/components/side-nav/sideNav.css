@@ -29,3 +29,9 @@
     color: inherit;
 }
 
+@media(max-width: 768px) {
+    .menu-text {
+        display: none;
+    }
+}
+
