@@ -33,5 +33,13 @@
     .menu-text {
         display: none;
     }
+    .bg-side-nav-dark {
+        top: 73px;
+    }
 }
 
+@media(max-width: 450px) {
+    .bg-side-nav-dark {
+        top: 110px;
+    }
+}
