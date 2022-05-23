@@ -68,7 +68,7 @@ export const Explore = () => {
         <div className="explore-content" key={videoList}>
           <div className="filter-container">
             <button
-              className={`btn btn-secondary ${
+              className={`btn btn-secondary catgeory-btn ${
                 selectedCategory === "" ? "btn-category-active" : ""
               }`}
               key={selectedCategory}
@@ -79,7 +79,7 @@ export const Explore = () => {
             {categories.length > 0
               ? categories.map((category) => (
                   <button
-                    className={`btn btn-secondary ${
+                    className={`btn btn-secondary catgeory-btn ${
                       selectedCategory === category.categoryName
                         ? "btn-category-active"
                         : ""

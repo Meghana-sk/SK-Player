@@ -42,9 +42,6 @@ export const VideoCard = ({
             </span>
           </div>
         </div>
-        <button className="more-option">
-          <i className="fas fa-ellipsis-v"></i>
-        </button>
       </div>
     </article>
   );
