@@ -30,12 +30,16 @@
 }
 
 @media(max-width: 768px) {
-    .side-menu-text {
+    .menu-text {
         display: none;
-    }  
+    }
     .bg-side-nav-dark {
-        position: fixed;
-        left: 0;
-        top: 1rem;
-    } 
+        top: 73px;
+    }
+}
+
+@media(max-width: 450px) {
+    .bg-side-nav-dark {
+        top: 110px;
+    }
 }

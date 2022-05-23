@@ -16,7 +16,7 @@ export const SideNav = () => {
           <span>
             <i className="far fa-compass"></i>
           </span>
-          <span className="side-menu-text">Explore</span>
+          <span className="menu-text">Explore</span>
         </div>
       </NavLink>
       <NavLink to="/playlist" style={getActiveStyle}>
@@ -24,7 +24,7 @@ export const SideNav = () => {
           <span>
             <i className="fas fa-list-ul"></i>
           </span>
-          <span className="side-menu-text">Playlist</span>
+          <span className="menu-text">Playlist</span>
         </div>
       </NavLink>
       <NavLink to="/watchlater" style={getActiveStyle}>
@@ -32,7 +32,7 @@ export const SideNav = () => {
           <span>
             <i className="far fa-clock"></i>
           </span>
-          <span className="side-menu-text">Watch later</span>
+          <span className="menu-text">Watch later</span>
         </div>
       </NavLink>
       <NavLink to="/liked" style={getActiveStyle}>
@@ -40,7 +40,7 @@ export const SideNav = () => {
           <span>
             <i className="far fa-thumbs-up"></i>
           </span>
-          <span className="side-menu-text">Liked</span>
+          <span className="menu-text">Liked</span>
         </div>
       </NavLink>
       <NavLink to="/history" style={getActiveStyle}>
@@ -48,7 +48,7 @@ export const SideNav = () => {
           <span>
             <i className="fas fa-history"></i>
           </span>
-          <span className="side-menu-text">History</span>
+          <span className="menu-text">History</span>
         </div>
       </NavLink>
     </aside>

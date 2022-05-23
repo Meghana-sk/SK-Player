@@ -1,10 +1,12 @@
 .video-plus-notes-container {
+    max-width: calc(100vw - 200px);
     display: flex;
+    /* justify-content: center; */
     align-items: center;
     flex-wrap: wrap;
     gap: 3rem;
     padding: 1rem;
-    max-width: 45rem;
+    /* max-width: 45rem; */
     margin-left: 200px;
 }
 
@@ -77,4 +79,17 @@
 
 .react-icons:hover {
     color: var(--primary-blue);
+}
+
+@media(max-width: 768px) {
+    .video-plus-notes-container {
+        max-width: calc(100vw - 150px);
+        margin-left: 75px;
+        margin-right: 50px;
+        font-size: 16px;
+    }
+    .react-player-container {
+        max-width: 25rem;
+        max-height: 22rem;
+    }
 }
