@@ -66,7 +66,7 @@ export const Signup = () => {
           navigate("/", { replace: true });
         }
       } catch (error) {
-        toast.error(error.response);
+        toast.error(error.response.data.errors[0]);
       }
     }
   };

@@ -38,13 +38,10 @@ export const VideoCard = ({
           <h6 className="channel-name">{channel}</h6>
           <div className="video-actions">
             <span className="views">
-              {views} • {uploadedTime}
+              {views} views • {uploadedTime}
             </span>
           </div>
         </div>
-        <button className="more-option">
-          <i className="fas fa-ellipsis-v"></i>
-        </button>
       </div>
     </article>
   );

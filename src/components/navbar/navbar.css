@@ -69,3 +69,18 @@
     color: inherit;
 }
 
+@media(max-width: 768px) {
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .brand-name {
+        font-size: 32px;
+    }
+    .user-section {
+        margin-left: auto;
+    } 
+}
+

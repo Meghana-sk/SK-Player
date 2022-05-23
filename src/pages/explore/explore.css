@@ -2,21 +2,27 @@
 
 .videos-container {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-self: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1rem; 
 }
 
 .explore-container {
+    max-width: calc(100vw - 50px);
     display: flex;
     background-color: var(--light-black-shade);
-    height: calc(100vh - 73px);
+    scroll-behavior: auto;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
 }
 
 .explore-content {
     margin: 1rem auto;
+    max-width: calc(100vw - 100px);
+    display: flex;
+    flex-direction: column;
 }
 
 .explore-content div button {
@@ -27,5 +33,38 @@
     width: 70%;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     margin-left: auto;
 }
+
+.btn-category-active {
+    background-color: var(--primary-blue);
+}
+
+@media(max-width: 422px) {
+    .filter-container {
+        display: flex;
+        margin: 20px;
+        width: calc(100vw - 110px);
+    }
+    .catgeory-btn {
+        font-size: 10px;
+        height: 44px;
+    } 
+    .explore-content {
+        margin: 20px;
+        max-width: calc(100vw - 110px);
+        display: flex;
+        flex-direction: column;
+    }
+    .videos-container {
+        max-width: calc(100vw - 100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-left: 75px;
+        margin-right: 25px;
+    }
+}
+

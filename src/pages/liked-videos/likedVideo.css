@@ -11,3 +11,14 @@
 .like-page-container p {
     margin:  0 auto;
 }
+
+@media(max-width: 468px) {
+    .like-page-container {
+        max-width: calc(100vw - 50px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 75px;
+        width: 250px;
+    }
+}

@@ -1,4 +1,4 @@
-@import url("../color-palette//colors.css");
+@import url("../color-palette/colors.css");
 
 .bg-side-nav-dark {
     background-color: var(--dark-gray);
@@ -29,3 +29,17 @@
     color: inherit;
 }
 
+@media(max-width: 768px) {
+    .menu-text {
+        display: none;
+    }
+    .bg-side-nav-dark {
+        top: 73px;
+    }
+}
+
+@media(max-width: 450px) {
+    .bg-side-nav-dark {
+        top: 110px;
+    }
+}

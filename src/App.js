@@ -11,20 +11,65 @@ import { VideoPlayer } from "./pages/video-player/VideoPlayer";
 import { LikedVideos } from "./pages/liked-videos/LikedVideos";
 import { WatchLater } from "./pages/watch-later/WatchLater";
 import { History } from "./pages/history/History";
+import { Playlist } from "./pages/playlist/Playlist";
+import { PlaylistVideo } from "./pages/playlist/PlaylistVideos";
+import { RequiresAuth } from "./routes/private-routes/RequiresAuth";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <ToastContainer theme="colored" autoClose={3000} />
+      <ToastContainer
+        theme="colored"
+        autoClose={3000}
+        position="bottom-right"
+        closeOnClick
+      />
       <Routes>
         <Route path="/" element={<Explore />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/video/:videoId" element={<VideoPlayer />} />
-        <Route path="/liked" element={<LikedVideos />} />
-        <Route path="/watchlater" element={<WatchLater />} />
-        <Route path="/history" element={<History />} />
+        <Route
+          path="/liked"
+          element={
+            <RequiresAuth>
+              <LikedVideos />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/watchlater"
+          element={
+            <RequiresAuth>
+              <WatchLater />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <RequiresAuth>
+              <History />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist"
+          element={
+            <RequiresAuth>
+              <Playlist />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist/:playlistId"
+          element={
+            <RequiresAuth>
+              <PlaylistVideo />
+            </RequiresAuth>
+          }
+        />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>

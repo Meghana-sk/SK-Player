@@ -1,0 +1,21 @@
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.playlist {
+    color: var(--white-smoke);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 20rem;
+    cursor: pointer;
+    border: 1px solid var(--white-smoke);
+}
+
+

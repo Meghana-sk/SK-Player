@@ -10,7 +10,9 @@ export const WatchLater = () => {
       <div className="like-page-container">
         <h1 className="text-center">Watch later videos</h1>
         {watchLaterState.watchlater.length ? (
-          watchLaterState.watchlater.map((video) => <VideoCard {...video} />)
+          watchLaterState.watchlater.map((video) => (
+            <VideoCard {...video} key={video._id} />
+          ))
         ) : (
           <p className="text-center empty-text">No videos to watch</p>
         )}

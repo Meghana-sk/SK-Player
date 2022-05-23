@@ -11,7 +11,9 @@ export const LikedVideos = () => {
       <div className="like-page-container">
         <h1 className="text-center">Liked videos</h1>
         {likeState.likes.length ? (
-          likeState.likes.map((video) => <VideoCard {...video} />)
+          likeState.likes.map((video) => (
+            <VideoCard {...video} key={video._id} />
+          ))
         ) : (
           <p className="text-center empty-text">No Liked videos</p>
         )}
