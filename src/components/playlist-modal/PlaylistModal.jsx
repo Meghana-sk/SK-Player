@@ -67,7 +67,7 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
         }
       }
     } catch (error) {
-      console.error(error);
+      toast.error(error.response.data.errors[0]);
     }
   };
 
@@ -94,7 +94,7 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
         <section className="modal-body">
           {playlists.length > 0
             ? playlists.map((el) => (
-                <div className="playlist-row">
+                <div className="playlist-row" key={el._id}>
                   <input
                     type="checkbox"
                     id={el._id}

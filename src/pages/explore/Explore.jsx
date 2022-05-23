@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { VideoCard } from "../../components/video-card/VideoCard";
 import { SideNav } from "../../components/side-nav/SideNav";
 import { CircularLoader } from "../../components/loaders/circular-loader/CircularLoader";
@@ -25,7 +26,7 @@ export const Explore = () => {
       }
     } catch (error) {
       setLoading(true);
-      alert(error.response);
+      toast.error(error.response.data.errors[0]);
     }
   };
 
@@ -44,7 +45,7 @@ export const Explore = () => {
           }));
         }
       } catch (error) {
-        console.error(error.response);
+        toast.error(error.response.data.errors[0]);
       }
     })();
   }, []);

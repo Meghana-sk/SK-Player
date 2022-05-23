@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 1rem 0;
+    position: relative;
 }
 
 .playlist {
@@ -17,13 +18,4 @@
     border: 1px solid var(--white-smoke);
 }
 
-.delete-video {
-    width: 40px;
-    height: 40px;
-    background-color: var(--error-red);
-    color: var(--white-smoke)
-}
 
-.delete-video i:hover {
-    color: var(--white-smoke)
-} 

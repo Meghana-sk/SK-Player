@@ -38,7 +38,9 @@ export const PlaylistVideo = () => {
         });
         toast.info(`removed successfully`);
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
   };
 
   return (
@@ -48,14 +50,14 @@ export const PlaylistVideo = () => {
         <div>
           {activePlaylist.videos.length ? (
             activePlaylist.videos.map((video) => (
-              <div className="playlist-container">
-                <VideoCard {...video} />
+              <div className="playlist-container" key={video._id}>
+                <VideoCard {...video} key={video._id} />
                 <button
                   onClick={deleteVideoFromPlaylistHandler}
                   id={video._id}
-                  className="btn btn-float delete-video"
+                  className="btn btn-primary"
                 >
-                  <i className="fas fa-trash"></i>
+                  Delete
                 </button>
               </div>
             ))

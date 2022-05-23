@@ -79,7 +79,9 @@ export const VideoPlayer = () => {
           }
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
   };
 
   const watchVideoLaterHandler = async () => {
@@ -122,7 +124,9 @@ export const VideoPlayer = () => {
           }
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
   };
 
   useEffect(() => {
@@ -135,7 +139,9 @@ export const VideoPlayer = () => {
           );
           setVideo(videoData);
         }
-      } catch (error) {}
+      } catch (error) {
+        toast.error(error.response.data.errors[0]);
+      }
     };
     fetchVideos();
   }, [videoId]);

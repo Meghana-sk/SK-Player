@@ -21,7 +21,9 @@ const addVideoToHistory = async (token, video, historyDispatch) => {
         });
       }
     }
-  } catch (error) {}
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+  }
 };
 
 const deleteVideoFromHistory = async (videoId, token, historyDispatch) => {
@@ -35,7 +37,9 @@ const deleteVideoFromHistory = async (videoId, token, historyDispatch) => {
       type: UPDATE_HISTORY,
       payload: response.data.history,
     });
-  } catch (error) {}
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+  }
 };
 
 const deleteAllVideoFromHistory = async (
@@ -56,7 +60,9 @@ const deleteAllVideoFromHistory = async (
       });
       toast.info("History is cleared");
     }
-  } catch (error) {}
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+  }
 };
 
 export { addVideoToHistory, deleteVideoFromHistory, deleteAllVideoFromHistory };

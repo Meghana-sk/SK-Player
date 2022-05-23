@@ -22,20 +22,14 @@ export const Login = () => {
     setUser({ ...user, password: event.target.value });
   };
 
-  const guestUserHandler = async (e) => {
-    setUser({ email: "guest@gmail.com", password: "guest@123" });
-    try {
-      const response = await axios.post("/api/auth/login", {
-        email: user.email,
-        password: user.password,
-      });
-      if (response.status === 200) {
-        toast.success("Logged in as guest");
-        localStorage.setItem("user", "Guest");
-        localStorage.setItem("token", response.data.encodedToken);
-        navigate("/", { replace: true });
-      }
-    } catch (error) {}
+  const guestUserCredentials = {
+    email: "guest@gmail.com",
+    password: "guest@123",
+  };
+
+  const guestUserHandler = (event) => {
+    event.preventDefault();
+    setUser(guestUserCredentials);
   };
 
   const loginHandler = async (event) => {
@@ -69,7 +63,7 @@ export const Login = () => {
   };
   return (
     <>
-      <form className="auth-container" onSubmit={(e) => loginHandler(e)}>
+      <form className="auth-container">
         <h2 className="white-font">Login</h2>
         <label htmlFor="email" className="text-left white-font">
           Email
@@ -97,9 +91,11 @@ export const Login = () => {
           value={user.password}
           onChange={userPasswordHandler}
         />
-        <button className="btn btn-primary">Login</button>
         <button className="btn btn-secondary" onClick={guestUserHandler}>
-          Login as guest
+          Add guest credentials
+        </button>
+        <button className="btn btn-primary" onClick={(e) => loginHandler(e)}>
+          Login
         </button>
         <p className="white-font">Don't have an account?</p>
         <button

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { UPDATE_PLAYLISTS } from "../../shared/types";
 
 const createPlaylist = async ({ requestBody, token, playlistDispatch }) => {
@@ -14,7 +15,9 @@ const createPlaylist = async ({ requestBody, token, playlistDispatch }) => {
         payload: response.data.playlists,
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+  }
 };
 
 export { createPlaylist };

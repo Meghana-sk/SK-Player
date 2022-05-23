@@ -29,7 +29,9 @@ export const Playlist = () => {
         });
       }
       toast.info(`${e.target.title} deleted successfully`);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
   };
   return (
     <div>
@@ -44,9 +46,9 @@ export const Playlist = () => {
             <button
               onClick={deletePlaylistHandler}
               id={list._id}
-              className="btn btn-float delete-video"
+              className="btn btn-primary"
             >
-              <i className="fas fa-trash"></i>
+              Delete
             </button>
           </div>
         ))

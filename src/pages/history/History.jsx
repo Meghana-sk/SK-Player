@@ -29,7 +29,7 @@ export const History = () => {
         {historyState.history.length ? (
           historyState.history.map((video) => (
             <div key={video} className="history-content">
-              <VideoCard {...video} />
+              <VideoCard {...video} key={video._id} />
               <button
                 className="btn btn-float delete-video"
                 onClick={() =>

@@ -19,7 +19,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ToastContainer theme="colored" autoClose={3000} />
+      <ToastContainer
+        theme="colored"
+        autoClose={3000}
+        position="bottom-right"
+        closeOnClick
+      />
       <Routes>
         <Route path="/" element={<Explore />} />
         <Route path="/login" element={<Login />} />
