@@ -25,12 +25,6 @@ export const Navbar = () => {
       <Link to="/" className="brand-name text-l fw-900">
         SK Player
       </Link>
-      <div className="search-box">
-        <input type="text" placeholder="Search videos" />
-        <button className="search-btn">
-          <i className="fas fa-search" />
-        </button>
-      </div>
       <div className="user-section">
         {isUser && (
           <span className="user-name">
