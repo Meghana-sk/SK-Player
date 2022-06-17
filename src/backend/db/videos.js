@@ -46,8 +46,7 @@ export const videos = [
   },
   {
     _id: "pu6tUW-S_-8",
-    title:
-      "𝐒𝐇𝐎𝐋𝐀𝐘 (𝟏𝟗𝟕𝟓) | 𝐀𝐦𝐢𝐭𝐚𝐛𝐡, 𝐃𝐡𝐚𝐫𝐦𝐞𝐧𝐝𝐫𝐚, 𝐇𝐞𝐦𝐚 𝐌𝐚𝐥𝐢𝐧𝐢 |𝐂𝐞𝐥𝐞𝐛𝐫𝐚𝐭𝐢𝐧𝐠 𝟒𝟔 𝐘𝐞𝐚𝐫𝐬",
+    title: "Sholay (1975) | Amitabh, Dharmendra, Hema Malini",
     videoDuration: "2:18:03",
     views: "36M",
     uploadedTime: "1 year ago",

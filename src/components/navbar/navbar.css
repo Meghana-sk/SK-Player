@@ -22,9 +22,14 @@
 .nav .search-box {
     max-width: 450px;
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     margin: 0 1rem;
     border: 1px solid var(--lightish-gray-shade);
+}
+
+.nav .search-container {
+    display: flex;
 }
 
 .nav .search-box input {
@@ -67,6 +72,19 @@
 
 .user-section:hover {
     color: inherit;
+}
+
+.nav .search-box .search-list li{
+    text-align: left;
+    color: var(--white-smoke);
+    list-style: none;
+    border-bottom: 1px solid var(--white-smoke);
+    padding: 5px;
+    width: 100%;
+}
+
+.nav .search-box .search-list .video-search-item {
+    cursor: pointer;
 }
 
 @media(max-width: 768px) {
