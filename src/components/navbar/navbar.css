@@ -73,8 +73,19 @@
 .user-section:hover {
     color: inherit;
 }
+.nav .search-box {
+    position: relative;
+}
 
-.nav .search-box .search-list li{
+.nav .search-box .search-list {
+    position: absolute;
+    top: 2.5rem;
+    width: 100%;
+    z-index: 4;
+    background-color: var(--dark-black);
+}
+
+.nav .search-box .search-list li {
     text-align: left;
     color: var(--white-smoke);
     list-style: none;
