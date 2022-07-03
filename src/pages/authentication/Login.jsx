@@ -44,7 +44,6 @@ export const Login = () => {
         if (response.status === 200) {
           toast.success("Logged in successfully");
           navigate("/", { replace: true });
-          console.log("LOGIN SUCCESS", response);
           localStorage.setItem("token", response.data.encodedToken);
           localStorage.setItem("user", JSON.stringify(response.data.foundUser));
           authDispatch({
