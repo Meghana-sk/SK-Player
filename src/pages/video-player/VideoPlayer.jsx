@@ -2,8 +2,8 @@ import ReactPlayer from "react-player/lazy";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { AiOutlineLike } from "react-icons/ai";
-import { BsBookmarkPlus } from "react-icons/bs";
+import { AiOutlineLike, AiFillLike } from "react-icons/ai";
+import { BsBookmarkPlus, BsFillBookmarkFill } from "react-icons/bs";
 import { RiPlayListAddLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import { SideNav } from "../../components/side-nav/SideNav";
@@ -30,7 +30,7 @@ export const VideoPlayer = () => {
 
   const { likeState, likeDispatch } = useLike();
   const { watchLaterState, watchLaterDispatch } = useWatchLater();
-  const { historyDispatch } = useHistory();
+  const { historyState, historyDispatch } = useHistory();
 
   const isVideoAlreadyLiked = likeState.likes.length
     ? likeState.likes.find((likedVideo) => likedVideo._id === videoId)
@@ -41,6 +41,11 @@ export const VideoPlayer = () => {
         (watchLaterVideo) => watchLaterVideo._id === videoId
       )
     : false;
+
+  const videoAlreadyInHistory = historyState.history.length
+    ? historyState.history.find((historyVideo) => historyVideo._id === videoId)
+    : false;
+  console.log(videoAlreadyInHistory, historyState.history.length);
 
   const likeVideoHandler = async () => {
     try {
@@ -159,7 +164,11 @@ export const VideoPlayer = () => {
               muted={true}
               width="100%"
               height="100%"
-              onReady={() => addVideoToHistory(token, video, historyDispatch)}
+              onReady={() =>
+                !videoAlreadyInHistory
+                  ? addVideoToHistory(token, video, historyDispatch)
+                  : {}
+              }
               className="video-player"
             />
           </div>
@@ -170,20 +179,32 @@ export const VideoPlayer = () => {
                 <p>{video.views} views</p>
                 <p>{video.uploadedTime}</p>
               </div>
-              <AiOutlineLike
-                size="1.5em"
-                className={`react-icons ${
-                  isVideoAlreadyLiked ? "liked-watchlater-active" : null
-                } `}
-                onClick={likeVideoHandler}
-              />
-              <BsBookmarkPlus
-                className={`react-icons ${
-                  isVideoAlreadyInWatchLater ? "liked-watchlater-active" : null
-                } `}
-                onClick={watchVideoLaterHandler}
-                size="1.5em"
-              />
+              {!isVideoAlreadyLiked ? (
+                <AiOutlineLike
+                  size="1.5em"
+                  className="react-icons"
+                  onClick={likeVideoHandler}
+                />
+              ) : (
+                <AiFillLike
+                  size="1.5em"
+                  onClick={likeVideoHandler}
+                  className="react-icons"
+                />
+              )}
+              {!isVideoAlreadyInWatchLater ? (
+                <BsBookmarkPlus
+                  className="react-icons"
+                  onClick={watchVideoLaterHandler}
+                  size="1.5em"
+                />
+              ) : (
+                <BsFillBookmarkFill
+                  className="react-icons"
+                  onClick={watchVideoLaterHandler}
+                  size="1.5em"
+                />
+              )}
               <RiPlayListAddLine
                 className="react-icons"
                 size="1.5em"
