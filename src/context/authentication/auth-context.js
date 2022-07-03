@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 
 const defaultState = {
   user: "",
-  token: "",
+  token: localStorage.getItem("token") || "",
 };
 
 const AuthProvider = ({ children }) => {

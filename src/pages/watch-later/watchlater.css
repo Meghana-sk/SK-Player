@@ -1,0 +1,18 @@
+.watchlater-content {
+    display: flex;
+    position: relative;
+}
+
+.delete-video {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--error-red);
+    color: var(--white-smoke)
+}
+
+.delete-video i:hover {
+    color: var(--white-smoke)
+} 

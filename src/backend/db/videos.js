@@ -72,7 +72,8 @@ export const videos = [
   },
   {
     _id: "jVRsmUcaqrU",
-    title: "Fast and Furious 9",
+    title:
+      "Fast and Furious 9 | Vin Diesel, John Cena, Michael Rodriguez, Tyrese Gibson",
     videoDuration: "1:27:42",
     views: "7M",
     uploadedTime: "3 months ago",

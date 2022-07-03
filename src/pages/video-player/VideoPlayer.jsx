@@ -45,7 +45,6 @@ export const VideoPlayer = () => {
   const videoAlreadyInHistory = historyState.history.length
     ? historyState.history.find((historyVideo) => historyVideo._id === videoId)
     : false;
-  console.log(videoAlreadyInHistory, historyState.history.length);
 
   const likeVideoHandler = async () => {
     try {
