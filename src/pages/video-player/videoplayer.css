@@ -19,7 +19,8 @@
 
 .react-player-container {
     position: relative;
-    padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */    
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+    height: 70vh;  
 }
 
 .video-player  {
@@ -88,8 +89,11 @@
         margin-right: 50px;
         font-size: 16px;
     }
-    .react-player-container {
-        max-width: 25rem;
-        max-height: 22rem;
-    }
 }
+@media (max-width: 540px) {
+    .react-player-container {
+      margin: 0 auto;
+      width: 38rem;
+      height: 30vh;
+    }
+  }
