@@ -4,3 +4,4 @@
 - Feat: Authentication forms - Login and Signup form validations using regex
 - Fix: Text box doesn't get empty after playlist gets created successfully
 - Feat: Videos can be removed from liked as well as watch later pages
+- Add favicon
