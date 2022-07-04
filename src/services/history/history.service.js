@@ -21,9 +21,7 @@ const addVideoToHistory = async (token, video, historyDispatch) => {
         });
       }
     }
-  } catch (error) {
-    toast.error(error.response.data.errors[0]);
-  }
+  } catch (error) {}
 };
 
 const deleteVideoFromHistory = async (videoId, token, historyDispatch) => {

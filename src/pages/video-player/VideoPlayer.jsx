@@ -87,7 +87,6 @@ export const VideoPlayer = () => {
       toast.error(error.response.data.errors[0]);
     }
   };
-
   const watchVideoLaterHandler = async () => {
     try {
       if (!token) {
@@ -163,7 +162,7 @@ export const VideoPlayer = () => {
               muted={true}
               width="100%"
               height="100%"
-              onReady={() =>
+              onStart={() =>
                 !videoAlreadyInHistory
                   ? addVideoToHistory(token, video, historyDispatch)
                   : {}
@@ -178,27 +177,43 @@ export const VideoPlayer = () => {
                 <p>{video.views} views</p>
                 <p>{video.uploadedTime}</p>
               </div>
-              {!isVideoAlreadyLiked ? (
-                <AiOutlineLike
-                  size="1.5em"
-                  className="react-icons"
-                  onClick={likeVideoHandler}
-                />
+              {token ? (
+                !isVideoAlreadyLiked ? (
+                  <AiOutlineLike
+                    size="1.5em"
+                    className="react-icons"
+                    onClick={likeVideoHandler}
+                  />
+                ) : (
+                  <AiFillLike
+                    size="1.5em"
+                    onClick={likeVideoHandler}
+                    className="react-icons"
+                  />
+                )
               ) : (
-                <AiFillLike
+                <AiOutlineLike
                   size="1.5em"
                   onClick={likeVideoHandler}
                   className="react-icons"
                 />
               )}
-              {!isVideoAlreadyInWatchLater ? (
-                <BsBookmarkPlus
-                  className="react-icons"
-                  onClick={watchVideoLaterHandler}
-                  size="1.5em"
-                />
+              {token ? (
+                !isVideoAlreadyInWatchLater ? (
+                  <BsBookmarkPlus
+                    className="react-icons"
+                    onClick={watchVideoLaterHandler}
+                    size="1.5em"
+                  />
+                ) : (
+                  <BsFillBookmarkFill
+                    className="react-icons"
+                    onClick={watchVideoLaterHandler}
+                    size="1.5em"
+                  />
+                )
               ) : (
-                <BsFillBookmarkFill
+                <BsBookmarkPlus
                   className="react-icons"
                   onClick={watchVideoLaterHandler}
                   size="1.5em"

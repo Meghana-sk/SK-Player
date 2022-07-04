@@ -11,10 +11,7 @@ const watchLaterReducer = (state, action) => {
         watchlater: action.payload,
       };
     case CLEAR_WATCH_LATER_VIDEOS:
-      return {
-        ...state,
-        watchlater: [],
-      };
+      return { ...state, watchlater: [] };
     default:
       return state;
   }
