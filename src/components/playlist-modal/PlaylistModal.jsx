@@ -28,6 +28,7 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
         },
       };
       createPlaylist({ requestBody, token, playlistDispatch });
+      setPlaylistName("");
     }
   };
   const playlistNameHandler = (e) => {
@@ -117,6 +118,7 @@ export const PlaylistModal = ({ video, setModalOpen }) => {
             onChange={playlistNameHandler}
             className="input-text"
             type="text"
+            value={playlistName}
           />
           <div className="create-playlist-wrapper" onClick={createNewPlaylist}>
             <AiOutlinePlus />

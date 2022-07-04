@@ -21,9 +21,7 @@ const addVideoToHistory = async (token, video, historyDispatch) => {
         });
       }
     }
-  } catch (error) {
-    toast.error(error.response.data.errors[0]);
-  }
+  } catch (error) {}
 };
 
 const deleteVideoFromHistory = async (videoId, token, historyDispatch) => {
@@ -65,4 +63,27 @@ const deleteAllVideoFromHistory = async (
   }
 };
 
-export { addVideoToHistory, deleteVideoFromHistory, deleteAllVideoFromHistory };
+const getVideosInHistory = async (token, historyDispatch) => {
+  try {
+    const response = await axios.get("/api/user/history", {
+      headers: { authorization: token },
+    });
+    if (response.status === 200) {
+      historyDispatch({
+        type: UPDATE_HISTORY,
+        payload: response.data.history,
+      });
+    } else {
+      throw new Error(" Something Went Wrong..Try Again Later");
+    }
+  } catch (error) {
+    toast.error(error.response.data.errors[0]);
+  }
+};
+
+export {
+  addVideoToHistory,
+  deleteVideoFromHistory,
+  deleteAllVideoFromHistory,
+  getVideosInHistory,
+};

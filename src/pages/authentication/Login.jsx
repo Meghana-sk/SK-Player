@@ -4,10 +4,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./authentication.css";
 import { useAuth } from "../../context/authentication/auth-context";
+import { useLike } from "../../context/like-video/like-video-context";
 import { LOGIN } from "../../shared/types";
+import { getLikesHandler } from "../../services/likes/getLikes.service";
+import { getVideosInHistory } from "../../services/history/history.service";
+import { getVideosInWatchLater } from "../../services/watchlater/getWatchLaterVideos.service";
+import { getVideosInPlaylists } from "../../services/playlist/getPlaylists.service";
+import { useHistory } from "../../context/history/history-context";
+import { useWatchLater } from "../../context/watch-later/watch-later-context";
+import { usePlaylist } from "../../context/playlist/playlist-context";
 
 export const Login = () => {
   const { authDispatch } = useAuth();
+  const { likeDispatch } = useLike();
+  const { historyDispatch } = useHistory();
+  const { watchLaterDispatch } = useWatchLater();
+  const { playlistDispatch } = usePlaylist();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -45,7 +57,7 @@ export const Login = () => {
           toast.success("Logged in successfully");
           navigate("/", { replace: true });
           localStorage.setItem("token", response.data.encodedToken);
-          localStorage.setItem("user", response.data.firstName);
+          localStorage.setItem("user", JSON.stringify(response.data.foundUser));
           authDispatch({
             type: LOGIN,
             payload: {
@@ -53,6 +65,10 @@ export const Login = () => {
               token: response.data.encodedToken,
             },
           });
+          getLikesHandler(response.data.encodedToken, likeDispatch);
+          getVideosInWatchLater(response.data.encodedToken, watchLaterDispatch);
+          getVideosInHistory(response.data.encodedToken, historyDispatch);
+          getVideosInPlaylists(response.data.encodedToken, playlistDispatch);
         } else {
           toast.error("Please try logging in again");
         }

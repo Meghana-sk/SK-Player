@@ -38,36 +38,53 @@ export const Signup = () => {
 
   const signupHandler = async (event) => {
     event.preventDefault();
-
-    if (
-      user.email &&
-      user.password === user.confirmPassword &&
-      user.firstName &&
-      user.lastName
-    ) {
-      const { email, password, firstName, lastName } = user;
-      try {
-        const response = await axios.post("/api/auth/signup", {
-          email: email,
-          password: password,
-          firstName: firstName,
-          lastName: lastName,
-        });
-        if (response.status === 201) {
-          localStorage.setItem("token", response.data.encodedToken);
-          authDispatch({
-            type: SIGNUP,
-            payload: {
-              user: response.data.createdUser,
-              token: response.data.encodedToken,
-            },
-          });
-          toast.success("Successfully signed up");
-          navigate("/", { replace: true });
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(user.email)) {
+      let passwordValidator =
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      if (user.password.match(passwordValidator)) {
+        if (
+          user.email &&
+          user.password === user.confirmPassword &&
+          user.firstName &&
+          user.lastName
+        ) {
+          const { email, password, firstName, lastName } = user;
+          try {
+            const response = await axios.post("/api/auth/signup", {
+              email: email,
+              password: password,
+              firstName: firstName,
+              lastName: lastName,
+            });
+            if (response.status === 201) {
+              localStorage.setItem("token", response.data.encodedToken);
+              localStorage.setItem(
+                "user",
+                JSON.stringify(response.data.createdUser)
+              );
+              authDispatch({
+                type: SIGNUP,
+                payload: {
+                  user: response.data.createdUser,
+                  token: response.data.encodedToken,
+                },
+              });
+              toast.success("Successfully signed up");
+              navigate("/", { replace: true });
+            }
+          } catch (error) {
+            toast.error(error.response.data.errors[0]);
+          }
+        } else {
+          toast.error("Passwords dont match");
         }
-      } catch (error) {
-        toast.error(error.response.data.errors[0]);
+      } else {
+        toast.error(
+          "Enter password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character"
+        );
       }
+    } else {
+      toast.error("Enter valid email");
     }
   };
   return (

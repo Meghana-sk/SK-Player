@@ -12,6 +12,25 @@
     margin:  0 auto;
 }
 
+.like-content {
+    display: flex;
+    position: relative;
+}
+
+.delete-video {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--error-red);
+    color: var(--white-smoke)
+}
+
+.delete-video i:hover {
+    color: var(--white-smoke)
+} 
+
 @media(max-width: 468px) {
     .like-page-container {
         max-width: calc(100vw - 50px);
